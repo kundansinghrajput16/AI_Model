@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/images/logoDhruvai.png" alt="DHRUV.AI Logo">
+                <div class="logo-text">
+                    <span class="dhruv">DHRUV</span><span class="ai">.AI</span>
+                </div>
+            </div>
+            
+            <button class="menu-btn" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="home.html" class="nav-item">Home</a>
+                <a href="vision.html" class="nav-item">Vision</a>
+                <a href="aimodel.html" class="nav-item">AIModel</a>
+                <a href="process.html" class="nav-item">Process</a>
+                <a href="features.html" class="nav-item">Features</a>
+                <!-- <a href="#components" class="nav-item">Components</a> -->
+                <a href="video.html" class="nav-item">Gallery</a>
+                <!-- <a href="footer.html" class="nav-item">Contact Us</a> -->
+            </div>
+        </div>
+    </nav>
+
+    <section class="mission-section" id="process">
+        <div class="process-container">
+            <h2>Our Process</h2>
+            <div class="workflow-container">
+                <!-- <button class="workflow-nav prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button> -->
+                <div class="workflow-item active">
+                    <div class="workflow-icon">
+                        <img src="assets/images/droneProcess.png" alt="Video Footage Capture">
+                        <span class="step-number">01</span>
+                    </div>
+                    <h3>Video Footage Capture</h3>
+                    <p>A drone captures video footage of crops using high-resolution cameras</p>
+                </div>
+                <div class="workflow-item">
+                    <div class="workflow-icon">
+                        <img src="assets/images/Ai.png" alt="AI Model Analysis">
+                        <span class="step-number">02</span>
+                    </div>
+                    <h3>AI Model Analysis</h3>
+                    <p>The AI model processes the video footage to detect plant diseases</p>
+                </div>
+                <div class="workflow-item">
+                    <div class="workflow-icon">
+                        <img src="assets/images/data-collection.png" alt="Disease Detection">
+                        <span class="step-number">03</span>
+                    </div>
+                    <h3>Disease Detection & Diagnosis</h3>
+                    <p>The AI matches symptoms with known plant diseases and identifies affected areas</p>
+                </div>
+                <div class="workflow-item">
+                    <div class="workflow-icon">
+                        <img src="assets/images/dataAnalasis.png" alt="Pesticide Spraying">
+                        <span class="step-number">04</span>
+                    </div>
+                    <h3>Automated Pesticide Spraying</h3>
+                    <p>The drone selectively sprays pesticides only where needed, reducing waste and improving efficiency</p>
+                </div>
+                <div class="workflow-item">
+                    <div class="workflow-icon">
+                        <img src="assets/images/resultt.png" alt="Reporting">
+                        <span class="step-number">05</span>
+                    </div>
+                    <h3>Reporting & Alerts</h3>
+                    <p>The system generates reports/heat map with insights for farmers</p>
+                </div>
+                <!-- <button class="workflow-nav next">
+                    <i class="fas fa-chevron-right"></i>
+                </button> -->
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer" id="footer">
+        <div class="footer-bottom">
+            <p>© 2024 DHRUV.AI | All Rights Reserved</p>
+        </div>
+    </footer>
+
+</body>
+</html>

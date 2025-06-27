@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+<style>
+
+</style>
+
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/images/logoDhruvai.png" alt="DHRUV.AI Logo">
+                <div class="logo-text">
+                    <span class="dhruv">DHRUV</span><span class="ai">.AI</span>
+                </div>
+            </div>
+            
+            <button class="menu-btn" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="home.html" class="nav-item">Home</a>
+                <a href="vision.html" class="nav-item">Vision</a>
+                <a href="aimodel.html" class="nav-item">AIModel</a>
+                <a href="process.html" class="nav-item">Process</a>
+                <a href="features.html" class="nav-item">Features</a>
+                <!-- <a href="#components" class="nav-item">Components</a> -->
+                <a href="video.html" class="nav-item">Gallery</a>
+                <!-- <a href="footer.html" class="nav-item">Contact Us</a> -->
+            </div>
+        </div>
+    </nav>
+    
+    <div class="aimodel-container">
+        <h2>AI Model</h2>
+        <h1 style="color:#006B5E ;">AI Model</h1>
+        <p>Our advanced AI model can detect and analyze various plant diseases with high accuracy.</p>
+        
+        <!-- Disease Input Form -->
+        <div class="disease-input-form">
+            <h3>Check Disease Treatment</h3>
+            <form id="diseaseForm">
+                <div class="form-group">
+                    <label for="diseaseName">Select Disease:</label>
+                    <select id="diseaseName" required>
+                        <option value="">Select a disease...</option>
+                        <option value="Early Blight">Early Blight</option>
+                        <option value="Late Blight">Late Blight</option>
+                        <option value="Septoria Leaf Spot">Septoria Leaf Spot</option>
+                        <option value="Bacterial Spot">Bacterial Spot</option>
+                        <option value="Target Spot">Target Spot</option>
+                        <option value="Leaf Mold">Leaf Mold</option>
+                        <option value="Two-Spotted Spider Mite">Two-Spotted Spider Mite</option>
+                        <option value="Tomato Yellow Leaf Curl">Tomato Yellow Leaf Curl</option>
+                        <option value="Mosaic Virus">Mosaic Virus</option>
+                        <option value="Leaf Miners">Leaf Miners</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="damagePercentage">Damage Percentage:</label>
+                    <input type="number" id="damagePercentage" min="0" max="100" required>
+                </div>
+                <button type="submit" class="submit-btn">Get Treatment</button>
+            </form>
+        </div>
+        
+        <!-- Results Display Section -->
+        <div id="treatmentResults" class="treatment-results" style="display: none;">
+            <h3>Recommended Treatment</h3>
+            <div class="results-content">
+                <div class="damage-info">
+                    <span class="damage-label">Damage Level:</span>
+                    <span id="displayDamage" class="damage-value"></span>
+                </div>
+                <div class="pesticide-recommendations">
+                    <h4>Recommended Pesticides:</h4>
+                    <ul id="pesticideList"></ul>
+                </div>
+                <div class="application-timing">
+                    <h4>Application Schedule:</h4>
+                    <p id="applicationTiming"></p>
+                </div>
+                <div class="precautions">
+                    <h4>Important Precautions:</h4>
+                    <ul id="precautionsList"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="disease-grid">
+        <div class="disease-card">
+            <div class="disease-image">
+                <img src="https://images.unsplash.com/photo-1593691509543-c55fb32e5cee?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Early Blight">
+            </div>
+            <div class="disease-info">
+                <h3>Early Blight</h3>
+                <div class="damage-percentage">Damage: 30%</div>
+                <div class="pesticide-info">
+                    <h4>Recommended Pesticides:</h4>
+                    <ul>
+                        <li>Chlorothalonil (Bravo) - 2 ml per liter of water (Low damage), 2.5 ml per liter of water (Medium damage), 3 ml per liter of water (High damage)</li>
+                        <li>Mancozeb (Dithane) - 2 ml per liter of water (Low damage), 2.5 ml per liter of water (Medium damage), 3 ml per liter of water (High damage)</li>
+                        <li>Copper-based fungicides - 1.5 ml per liter of water (Low damage), 2 ml per liter of water (Medium damage), 2.5 ml per liter of water (High damage)</li>
+                    </ul>
+                    <div class="application-time">
+                        <h4>Application Timing:</h4>
+                        <p>Apply immediately when symptoms appear. For low damage (0-25%): Reapply every 10-14 days. For medium damage (26-50%): Reapply every 7-10 days. For high damage (51-100%): Reapply every 5-7 days. Use 200-300 liters of spray solution per acre.</p>
+                    </div>
+                    <div class="precautions">
+                        <h4>Precautions:</h4>
+                        <ul>
+                            <li>Wear protective clothing and gloves</li>
+                            <li>Avoid spraying during peak sunlight hours</li>
+                            <li>Ensure proper ventilation</li>
+                            <li>Follow label instructions carefully</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="disease-card">
+            <div class="disease-image">
+                <img src="https://images.unsplash.com/photo-1593691509543-c55fb32e5cee?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Late Blight">
+            </div>
+            <div class="disease-info">
+                <h3>Late Blight</h3>
+                <div class="damage-percentage">Damage: 40%</div>
+                <div class="pesticide-info">
+                    <h4>Recommended Pesticides:</h4>
+                    <ul>
+                        <li>Famoxadone + Cymoxanil (Tanos) - 1.5 ml per liter of water (Low damage), 2 ml per liter of water (Medium damage), 2.5 ml per liter of water (High damage)</li>
+                        <li>Mandipropamid (Revus) - 2 ml per liter of water (Low damage), 2.5 ml per liter of water (Medium damage), 3 ml per liter of water (High damage)</li>
+                        <li>Chlorothalonil (Bravo) - 2 ml per liter of water (Low damage), 2.5 ml per liter of water (Medium damage), 3 ml per liter of water (High damage)</li>
+                    </ul>
+                    <div class="application-time">
+                        <h4>Application Timing:</h4>
+                        <p>Apply at first sign of disease. For low damage (0-25%): Reapply every 7-10 days. For medium damage (26-50%): Reapply every 5-7 days. For high damage (51-100%): Reapply every 3-5 days. Use 200-300 liters of spray solution per acre.</p>
+                    </div>
+                    <div class="precautions">
+                        <h4>Precautions:</h4>
+                        <ul>
+                            <li>Monitor weather conditions</li>
+                            <li>Apply before rain events</li>
+                            <li>Use appropriate protective equipment</li>
+                            <li>Rotate different fungicide classes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="disease-card">
+            <div class="disease-image">
+                <img src="https://images.unsplash.com/photo-1593691509543-c55fb32e5cee?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Septoria Leaf Spot">
+            </div>
+            <div class="disease-info">
+                <h3>Septoria Leaf Spot</h3>
+                <div class="damage-percentage">Damage: 35%</div>
+                <div class="pesticide-info">
+                    <h4>Recommended Pesticides:</h4>
+                    <ul>
+                        <li>Chlorothalonil (Bravo) - 2 ml per liter of water (Low damage), 2.5 ml per liter of water (Medium damage), 3 ml per liter of water (High damage)</li>
+                        <li>Mancozeb (Dithane) - 2 ml per liter of water (Low damage), 2.5 ml per liter of water (Medium damage), 3 ml per liter of water (High damage)</li>
+                        <li>Copper-based fungicides - 1.5 ml per liter of water (Low damage), 2 ml per liter of water (Medium damage), 2.5 ml per liter of water (High damage)</li>
+                    </ul>
+                    <div class="application-time">
+                        <h4>Application Timing:</h4>
+                        <p>Apply at first sign of disease. For low damage (0-25%): Reapply every 10-14 days. For medium damage (26-50%): Reapply every 7-10 days. For high damage (51-100%): Reapply every 5-7 days. Use 200-300 liters of spray solution per acre.</p>
+                    </div>
+                    <div class="precautions">
+                        <h4>Precautions:</h4>
+                        <ul>
+                            <li>Remove infected leaves</li>
+                            <li>Maintain good air circulation</li>
+                            <li>Water at base of plants</li>
+                            <li>Follow safety guidelines</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="disease-card">
+            <div class="disease-image">
+                <img src="https://images.unsplash.com/photo-1593691509543-c55fb32e5cee?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Bacterial Spot">
+            </div>
+            <div class="disease-info">
+                <h3>Bacterial Spot</h3>
+                <div class="damage-percentage">Damage: 30%</div>
+                <div class="pesticide-info">
+                    <h4>Recommended Pesticides:</h4>
+                    <ul>
+                        <li>Copper-based bactericides - 1.5 ml per liter of water (Low damage), 2 ml per liter of water (Medium damage), 2.5 ml per liter of water (High damage)</li>
+                        <li>Streptomycin sulfate - 1 ml per liter of water (Low damage), 1.5 ml per liter of water (Medium damage), 2 ml per liter of water (High damage)</li>
+                        <li>Mancozeb + Copper - 2 ml per liter of water (Low damage), 2.5 ml per liter of water (Medium damage), 3 ml per liter of water (High damage)</li>
+                    </ul>
+                    <div class="application-time">
+                        <h4>Application Timing:</h4>
+                        <p>Apply at first sign of disease. For low damage (0-25%): Reapply every 7-10 days. For medium damage (26-50%): Reapply every 5-7 days. For high damage (51-100%): Reapply every 3-5 days. Use 200-300 liters of spray solution per acre.</p>
+                    </div>
+                    <div class="precautions">
+                        <h4>Precautions:</h4>
+                        <ul>
+                            <li>Use disease-free seeds</li>
+                            <li>Avoid overhead irrigation</li>
+                            <li>Practice crop rotation</li>
+                            <li>Wear protective gear</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="disease-card">
+            <div class="disease-image">
+                <img src="https://images.unsplash.com/photo-1593691509543-c55fb32e5cee?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Target Spot">
+            </div>
+            <div class="disease-info">
+                <h3>Target Spot</h3>
+                <div class="damage-percentage">Damage: 35%</div>
+                <div class="pesticide-info">
+                    <h4>Recommended Pesticides:</h4>
+                    <ul>
+                        <li>Chlorothalonil (Bravo) - 2 ml per liter of water (Low damage), 2.5 ml per liter of water (Medium damage), 3 ml per liter of water (High damage)</li>
+                        <li>Mancozeb (Dithane) - 2 ml per liter of water (Low damage), 2.5 ml per liter of water (Medium damage), 3 ml per liter of water (High damage)</li>
+                        <li>Azoxystrobin (Quadris) - 1 ml per liter of water (Low damage), 1.5 ml per liter of water (Medium damage), 2 ml per liter of water (High damage)</li>
+                    </ul>
+                    <div class="application-time">
+                        <h4>Application Timing:</h4>
+                        <p>Apply at first sign of disease. For low damage (0-25%): Reapply every 10-14 days. For medium damage (26-50%): Reapply every 7-10 days. For high damage (51-100%): Reapply every 5-7 days. Use 200-300 liters of spray solution per acre.</p>
+                    </div>
+                    <div class="precautions">
+                        <h4>Precautions:</h4>
+                        <ul>
+                            <li>Maintain proper spacing</li>
+                            <li>Remove infected debris</li>
+                            <li>Monitor humidity levels</li>
+                            <li>Follow label instructions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="disease-card">
+            <div class="disease-image">
+                <img src="https://images.unsplash.com/photo-1593691509543-c55fb32e5cee?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Leaf Mold">
+            </div>
+            <div class="disease-info">
+                <h3>Leaf Mold</h3>
+                <div class="damage-percentage">Damage: 30%</div>
+                <div class="pesticide-info">
+                    <h4>Recommended Pesticides:</h4>
+                    <ul>
+                        <li>Chlorothalonil (Bravo) - 2 ml per liter of water (Low damage), 2.5 ml per liter of water (Medium damage), 3 ml per liter of water (High damage)</li>
+                        <li>Mancozeb (Dithane) - 2 ml per liter of water (Low damage), 2.5 ml per liter of water (Medium damage), 3 ml per liter of water (High damage)</li>
+                        <li>Copper-based fungicides - 1.5 ml per liter of water (Low damage), 2 ml per liter of water (Medium damage), 2.5 ml per liter of water (High damage)</li>
+                    </ul>
+                    <div class="application-time">
+                        <h4>Application Timing:</h4>
+                        <p>Apply at first sign of disease. For low damage (0-25%): Reapply every 10-14 days. For medium damage (26-50%): Reapply every 7-10 days. For high damage (51-100%): Reapply every 5-7 days. Use 200-300 liters of spray solution per acre.</p>
+                    </div>
+                    <div class="precautions">
+                        <h4>Precautions:</h4>
+                        <ul>
+                            <li>Improve air circulation</li>
+                            <li>Reduce humidity levels</li>
+                            <li>Remove infected leaves</li>
+                            <li>Use protective equipment</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="disease-card">
+            <div class="disease-image">
+                <img src="https://images.unsplash.com/photo-1593691509543-c55fb32e5cee?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Two-Spotted Spider Mite">
+            </div>
+            <div class="disease-info">
+                <h3>Two-Spotted Spider Mite</h3>
+                <div class="damage-percentage">Damage: 30%</div>
+                <div class="pesticide-info">
+                    <h4>Recommended Pesticides:</h4>
+                    <ul>
+                        <li>Abamectin (Agri-Mek) - 0.8 ml per liter of water (Low damage), 1 ml per liter of water (Medium damage), 1.2 ml per liter of water (High damage)</li>
+                        <li>Bifenthrin (Brigade) - 1.5 ml per liter of water (Low damage), 2 ml per liter of water (Medium damage), 2.5 ml per liter of water (High damage)</li>
+                        <li>Spinosad (Entrust) - 1.5 ml per liter of water (Low damage), 2 ml per liter of water (Medium damage), 2.5 ml per liter of water (High damage)</li>
+                    </ul>
+                    <div class="application-time">
+                        <h4>Application Timing:</h4>
+                        <p>Apply when mites are detected. For low damage (0-25%): Reapply every 7-10 days. For medium damage (26-50%): Reapply every 5-7 days. For high damage (51-100%): Reapply every 3-5 days. Use 200-300 liters of spray solution per acre.</p>
+                    </div>
+                    <div class="precautions">
+                        <h4>Precautions:</h4>
+                        <ul>
+                            <li>Monitor mite populations</li>
+                            <li>Use appropriate protective gear</li>
+                            <li>Rotate different miticides</li>
+                            <li>Follow safety guidelines</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="disease-card">
+            <div class="disease-image">
+                <img src="https://images.unsplash.com/photo-1593691509543-c55fb32e5cee?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Tomato Yellow Leaf Curl">
+            </div>
+            <div class="disease-info">
+                <h3>Tomato Yellow Leaf Curl</h3>
+                <div class="damage-percentage">Damage: 40%</div>
+                <div class="pesticide-info">
+                    <h4>Recommended Pesticides:</h4>
+                    <ul>
+                        <li>Imidacloprid (Admire Pro) - 1 ml per liter of water (Low damage), 1.5 ml per liter of water (Medium damage), 2 ml per liter of water (High damage)</li>
+                        <li>Thiamethoxam (Actara) - 0.8 ml per liter of water (Low damage), 1 ml per liter of water (Medium damage), 1.2 ml per liter of water (High damage)</li>
+                        <li>Dinotefuran (Venom) - 1 ml per liter of water (Low damage), 1.5 ml per liter of water (Medium damage), 2 ml per liter of water (High damage)</li>
+                    </ul>
+                    <div class="application-time">
+                        <h4>Application Timing:</h4>
+                        <p>Apply at first sign of whitefly infestation. For low damage (0-25%): Reapply every 10-14 days. For medium damage (26-50%): Reapply every 7-10 days. For high damage (51-100%): Reapply every 5-7 days. Use 200-300 liters of spray solution per acre.</p>
+                    </div>
+                    <div class="precautions">
+                        <h4>Precautions:</h4>
+                        <ul>
+                            <li>Control whitefly populations</li>
+                            <li>Use disease-free transplants</li>
+                            <li>Remove infected plants</li>
+                            <li>Follow safety protocols</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="disease-card">
+            <div class="disease-image">
+                <img src="https://images.unsplash.com/photo-1593691509543-c55fb32e5cee?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Mosaic Virus">
+            </div>
+            <div class="disease-info">
+                <h3>Mosaic Virus</h3>
+                <div class="damage-percentage">Damage: 30%</div>
+                <div class="pesticide-info">
+                    <h4>Management Approach:</h4>
+                    <p>No chemical control available. Focus on prevention and cultural practices.</p>
+                    <div class="application-time">
+                        <h4>Prevention Measures:</h4>
+                        <ul>
+                            <li>Use virus-free seeds</li>
+                            <li>Control aphid populations</li>
+                            <li>Remove infected plants</li>
+                            <li>Practice good sanitation</li>
+                        </ul>
+                    </div>
+                    <div class="precautions">
+                        <h4>Precautions:</h4>
+                        <ul>
+                            <li>Wash hands after handling plants</li>
+                            <li>Disinfect tools regularly</li>
+                            <li>Remove weeds that host the virus</li>
+                            <li>Use resistant varieties</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="disease-card">
+            <div class="disease-image">
+                <img src="https://images.unsplash.com/photo-1593691509543-c55fb32e5cee?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Leaf Miners">
+            </div>
+            <div class="disease-info">
+                <h3>Leaf Miners</h3>
+                <div class="damage-percentage">Damage: 30%</div>
+                <div class="pesticide-info">
+                    <h4>Recommended Pesticides:</h4>
+                    <ul>
+                        <li>Spinosad (Entrust) - 1.5 ml per liter of water (Low damage), 2 ml per liter of water (Medium damage), 2.5 ml per liter of water (High damage)</li>
+                        <li>Abamectin (Agri-Mek) - 0.8 ml per liter of water (Low damage), 1 ml per liter of water (Medium damage), 1.2 ml per liter of water (High damage)</li>
+                        <li>Cyromazine (Trigard) - 1.5 ml per liter of water (Low damage), 2 ml per liter of water (Medium damage), 2.5 ml per liter of water (High damage)</li>
+                    </ul>
+                    <div class="application-time">
+                        <h4>Application Timing:</h4>
+                        <p>Apply when mines are first detected. For low damage (0-25%): Reapply every 7-10 days. For medium damage (26-50%): Reapply every 5-7 days. For high damage (51-100%): Reapply every 3-5 days. Use 200-300 liters of spray solution per acre.</p>
+                    </div>
+                    <div class="precautions">
+                        <h4>Precautions:</h4>
+                        <ul>
+                            <li>Monitor for early signs</li>
+                            <li>Remove infested leaves</li>
+                            <li>Use yellow sticky traps</li>
+                            <li>Follow safety guidelines</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Disease data object
+        const diseaseData = {
+            "Early Blight": {
+                pesticides: [
+                    "Chlorothalonil (Bravo) - 2 ml per liter of water (Low damage), 2.5 ml per liter of water (Medium damage), 3 ml per liter of water (High damage)",
+                    "Mancozeb (Dithane) - 2 ml per liter of water (Low damage), 2.5 ml per liter of water (Medium damage), 3 ml per liter of water (High damage)",
+                    "Copper-based fungicides - 1.5 ml per liter of water (Low damage), 2 ml per liter of water (Medium damage), 2.5 ml per liter of water (High damage)"
+                ],
+                applicationTiming: "Apply immediately when symptoms appear. For low damage (0-25%): Reapply every 10-14 days. For medium damage (26-50%): Reapply every 7-10 days. For high damage (51-100%): Reapply every 5-7 days. Use 200-300 liters of spray solution per acre.",
+                precautions: [
+                    "Wear protective clothing and gloves",
+                    "Avoid spraying during peak sunlight hours",
+                    "Ensure proper ventilation",
+                    "Follow label instructions carefully"
+                ]
+            },
+            "Late Blight": {
+                pesticides: [
+                    "Famoxadone + Cymoxanil (Tanos) - 1.5 ml per liter of water (Low damage), 2 ml per liter of water (Medium damage), 2.5 ml per liter of water (High damage)",
+                    "Mandipropamid (Revus) - 2 ml per liter of water (Low damage), 2.5 ml per liter of water (Medium damage), 3 ml per liter of water (High damage)",
+                    "Chlorothalonil (Bravo) - 2 ml per liter of water (Low damage), 2.5 ml per liter of water (Medium damage), 3 ml per liter of water (High damage)"
+                ],
+                applicationTiming: "Apply at first sign of disease. For low damage (0-25%): Reapply every 7-10 days. For medium damage (26-50%): Reapply every 5-7 days. For high damage (51-100%): Reapply every 3-5 days. Use 200-300 liters of spray solution per acre.",
+                precautions: [
+                    "Monitor weather conditions",
+                    "Apply before rain events",
+                    "Use appropriate protective equipment",
+                    "Rotate different fungicide classes"
+                ]
+            },
+            "Septoria Leaf Spot": {
+                pesticides: [
+                    "Chlorothalonil (Bravo) - 2 ml per liter of water (Low damage), 2.5 ml per liter of water (Medium damage), 3 ml per liter of water (High damage)",
+                    "Mancozeb (Dithane) - 2 ml per liter of water (Low damage), 2.5 ml per liter of water (Medium damage), 3 ml per liter of water (High damage)",
+                    "Copper-based fungicides - 1.5 ml per liter of water (Low damage), 2 ml per liter of water (Medium damage), 2.5 ml per liter of water (High damage)"
+                ],
+                applicationTiming: "Apply at first sign of disease. For low damage (0-25%): Reapply every 10-14 days. For medium damage (26-50%): Reapply every 7-10 days. For high damage (51-100%): Reapply every 5-7 days. Use 200-300 liters of spray solution per acre.",
+                precautions: [
+                    "Remove infected leaves",
+                    "Maintain good air circulation",
+                    "Water at base of plants",
+                    "Follow safety guidelines"
+                ]
+            },
+            "Bacterial Spot": {
+                pesticides: [
+                    "Copper-based bactericides - 1.5 ml per liter of water (Low damage), 2 ml per liter of water (Medium damage), 2.5 ml per liter of water (High damage)",
+                    "Streptomycin sulfate - 1 ml per liter of water (Low damage), 1.5 ml per liter of water (Medium damage), 2 ml per liter of water (High damage)",
+                    "Mancozeb + Copper - 2 ml per liter of water (Low damage), 2.5 ml per liter of water (Medium damage), 3 ml per liter of water (High damage)"
+                ],
+                applicationTiming: "Apply at first sign of disease. For low damage (0-25%): Reapply every 7-10 days. For medium damage (26-50%): Reapply every 5-7 days. For high damage (51-100%): Reapply every 3-5 days. Use 200-300 liters of spray solution per acre.",
+                precautions: [
+                    "Use disease-free seeds",
+                    "Avoid overhead irrigation",
+                    "Practice crop rotation",
+                    "Wear protective gear"
+                ]
+            },
+            "Target Spot": {
+                pesticides: [
+                    "Chlorothalonil (Bravo) - 2 ml per liter of water (Low damage), 2.5 ml per liter of water (Medium damage), 3 ml per liter of water (High damage)",
+                    "Mancozeb (Dithane) - 2 ml per liter of water (Low damage), 2.5 ml per liter of water (Medium damage), 3 ml per liter of water (High damage)",
+                    "Azoxystrobin (Quadris) - 1 ml per liter of water (Low damage), 1.5 ml per liter of water (Medium damage), 2 ml per liter of water (High damage)"
+                ],
+                applicationTiming: "Apply at first sign of disease. For low damage (0-25%): Reapply every 10-14 days. For medium damage (26-50%): Reapply every 7-10 days. For high damage (51-100%): Reapply every 5-7 days. Use 200-300 liters of spray solution per acre.",
+                precautions: [
+                    "Maintain proper spacing",
+                    "Remove infected debris",
+                    "Monitor humidity levels",
+                    "Follow label instructions"
+                ]
+            },
+            "Leaf Mold": {
+                pesticides: [
+                    "Chlorothalonil (Bravo) - 2 ml per liter of water (Low damage), 2.5 ml per liter of water (Medium damage), 3 ml per liter of water (High damage)",
+                    "Mancozeb (Dithane) - 2 ml per liter of water (Low damage), 2.5 ml per liter of water (Medium damage), 3 ml per liter of water (High damage)",
+                    "Copper-based fungicides - 1.5 ml per liter of water (Low damage), 2 ml per liter of water (Medium damage), 2.5 ml per liter of water (High damage)"
+                ],
+                applicationTiming: "Apply at first sign of disease. For low damage (0-25%): Reapply every 10-14 days. For medium damage (26-50%): Reapply every 7-10 days. For high damage (51-100%): Reapply every 5-7 days. Use 200-300 liters of spray solution per acre.",
+                precautions: [
+                    "Improve air circulation",
+                    "Reduce humidity levels",
+                    "Remove infected leaves",
+                    "Use protective equipment"
+                ]
+            },
+            "Two-Spotted Spider Mite": {
+                pesticides: [
+                    "Abamectin (Agri-Mek) - 0.8 ml per liter of water (Low damage), 1 ml per liter of water (Medium damage), 1.2 ml per liter of water (High damage)",
+                    "Bifenthrin (Brigade) - 1.5 ml per liter of water (Low damage), 2 ml per liter of water (Medium damage), 2.5 ml per liter of water (High damage)",
+                    "Spinosad (Entrust) - 1.5 ml per liter of water (Low damage), 2 ml per liter of water (Medium damage), 2.5 ml per liter of water (High damage)"
+                ],
+                applicationTiming: "Apply when mites are detected. For low damage (0-25%): Reapply every 7-10 days. For medium damage (26-50%): Reapply every 5-7 days. For high damage (51-100%): Reapply every 3-5 days. Use 200-300 liters of spray solution per acre.",
+                precautions: [
+                    "Monitor mite populations",
+                    "Use appropriate protective gear",
+                    "Rotate different miticides",
+                    "Follow safety guidelines"
+                ]
+            },
+            "Tomato Yellow Leaf Curl": {
+                pesticides: [
+                    "Imidacloprid (Admire Pro) - 1 ml per liter of water (Low damage), 1.5 ml per liter of water (Medium damage), 2 ml per liter of water (High damage)",
+                    "Thiamethoxam (Actara) - 0.8 ml per liter of water (Low damage), 1 ml per liter of water (Medium damage), 1.2 ml per liter of water (High damage)",
+                    "Dinotefuran (Venom) - 1 ml per liter of water (Low damage), 1.5 ml per liter of water (Medium damage), 2 ml per liter of water (High damage)"
+                ],
+                applicationTiming: "Apply at first sign of whitefly infestation. For low damage (0-25%): Reapply every 10-14 days. For medium damage (26-50%): Reapply every 7-10 days. For high damage (51-100%): Reapply every 5-7 days. Use 200-300 liters of spray solution per acre.",
+                precautions: [
+                    "Control whitefly populations",
+                    "Use disease-free transplants",
+                    "Remove infected plants",
+                    "Follow safety protocols"
+                ]
+            },
+            "Mosaic Virus": {
+                pesticides: [],
+                applicationTiming: "No chemical control available. Focus on prevention and cultural practices.",
+                precautions: [
+                    "Use virus-free seeds",
+                    "Control aphid populations",
+                    "Remove infected plants",
+                    "Practice good sanitation"
+                ]
+            },
+            "Leaf Miners": {
+                pesticides: [
+                    "Spinosad (Entrust) - 1.5 ml per liter of water (Low damage), 2 ml per liter of water (Medium damage), 2.5 ml per liter of water (High damage)",
+                    "Abamectin (Agri-Mek) - 0.8 ml per liter of water (Low damage), 1 ml per liter of water (Medium damage), 1.2 ml per liter of water (High damage)",
+                    "Cyromazine (Trigard) - 1.5 ml per liter of water (Low damage), 2 ml per liter of water (Medium damage), 2.5 ml per liter of water (High damage)"
+                ],
+                applicationTiming: "Apply when mines are first detected. For low damage (0-25%): Reapply every 7-10 days. For medium damage (26-50%): Reapply every 5-7 days. For high damage (51-100%): Reapply every 3-5 days. Use 200-300 liters of spray solution per acre.",
+                precautions: [
+                    "Monitor for early signs",
+                    "Remove infested leaves",
+                    "Use yellow sticky traps",
+                    "Follow safety guidelines"
+                ]
+            }
+        };
+
+        // Form submission handler
+        document.getElementById('diseaseForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const diseaseName = document.getElementById('diseaseName').value;
+            const damagePercentage = document.getElementById('damagePercentage').value;
+            
+            if (!diseaseName || !damagePercentage) {
+                alert('Please select a disease and enter damage percentage');
+                return;
+            }
+
+            // Get disease data
+            const disease = diseaseData[diseaseName];
+            
+            // Update results display
+            document.getElementById('displayDamage').textContent = `${damagePercentage}%`;
+            
+            // Determine damage level and calculate specific dosage
+            let damageLevel = '';
+            let dosageMultiplier = 1;
+            
+            if (damagePercentage <= 25) {
+                damageLevel = 'Low';
+                dosageMultiplier = 1;
+            } else if (damagePercentage <= 50) {
+                damageLevel = 'Medium';
+                dosageMultiplier = 1.25;
+            } else {
+                damageLevel = 'High';
+                dosageMultiplier = 1.5;
+            }
+
+            // Update pesticide list with specific dosages
+            const pesticideList = document.getElementById('pesticideList');
+            pesticideList.innerHTML = '';
+            
+            if (disease.pesticides.length > 0) {
+                disease.pesticides.forEach(pesticide => {
+                    const li = document.createElement('li');
+                    // Extract base dosage and calculate specific dosage
+                    const baseDosage = parseFloat(pesticide.match(/\d+\.?\d*/)[0]);
+                    const specificDosage = (baseDosage * dosageMultiplier).toFixed(1);
+                    li.textContent = `${pesticide.split(' - ')[0]} - ${specificDosage} ml per liter of water (${damageLevel} damage level)`;
+                    pesticideList.appendChild(li);
+                });
+            } else {
+                const li = document.createElement('li');
+                li.textContent = 'No chemical control available';
+                pesticideList.appendChild(li);
+            }
+            
+            // Update application timing with specific schedule
+            let applicationSchedule = '';
+            if (damagePercentage <= 25) {
+                applicationSchedule = 'Apply immediately. Reapply every 10-14 days.';
+            } else if (damagePercentage <= 50) {
+                applicationSchedule = 'Apply immediately. Reapply every 7-10 days.';
+            } else {
+                applicationSchedule = 'Apply immediately. Reapply every 5-7 days.';
+            }
+            
+            document.getElementById('applicationTiming').textContent = 
+                `${applicationSchedule} Use 200-300 liters of spray solution per acre. For ${damagePercentage}% damage, increase spray volume by ${Math.round((dosageMultiplier - 1) * 100)}%.`;
+            
+            // Update precautions
+            const precautionsList = document.getElementById('precautionsList');
+            precautionsList.innerHTML = '';
+            disease.precautions.forEach(precaution => {
+                const li = document.createElement('li');
+                li.textContent = precaution;
+                precautionsList.appendChild(li);
+            });
+            
+            // Add damage-specific precautions
+            const damageSpecificPrecautions = document.createElement('li');
+            if (damagePercentage > 50) {
+                damageSpecificPrecautions.textContent = '⚠ High damage level: Consider removing severely infected leaves before spraying';
+            } else if (damagePercentage > 25) {
+                damageSpecificPrecautions.textContent = '⚠ Medium damage level: Monitor closely and adjust spray schedule if needed';
+            }
+            if (damagePercentage > 25) {
+                precautionsList.appendChild(damageSpecificPrecautions);
+            }
+            
+            // Show results section
+            document.getElementById('treatmentResults').style.display = 'block';
+            
+            // Scroll to results
+            document.getElementById('treatmentResults').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+
+<footer class="footer" id="footer">
+    <div class="footer-bottom">
+        <p>© 2024 DHRUV.AI | All Rights Reserved</p>
+    </div>
+</footer>
+
+</body>
+</html>

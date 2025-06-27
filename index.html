@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>DHRUV.AI - Agricultural Drone Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>  
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/images/logoDhruvai.png" alt="DHRUV.AI Logo">
+                <div class="logo-text">
+                    <span class="dhruv">DHRUV</span><span class="ai">.AI</span>
+                </div>
+            </div>
+            
+            <button class="menu-btn" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="home.html" class="nav-item">Home</a>
+                <a href="vision.html" class="nav-item">Vision</a>
+                <a href="aimodel.html" class="nav-item">AIModel</a>
+                <a href="process.html" class="nav-item">Process</a>
+                <a href="features.html" class="nav-item">Features</a>
+                <!-- <a href="#components" class="nav-item">Components</a> -->
+                <a href="video.html" class="nav-item">Gallery</a>
+                <!-- <a href="footer.html" class="nav-item">Contact Us</a> -->
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Smart Agriculture Monitoring with 
+                    <span class="highlight">AI Drones</span>
+                </h1>
+                <p class="hero-description">
+                    Create an IoT-based system that monitors plant health and provides pest control solutions. Our AI-powered drones help farmers detect diseases early, analyze field health, and optimize pesticide application.
+                </p>
+            </div>
+            <div class="hero-image">
+                <img src="assets/images/drone.jpeg" alt="Agricultural Drone" class="main-image">
+            </div>
+        </div>
+    </section>
+
+  
+
+    <!-- Add wave separators between sections -->
+    <div class="section-wave"></div>
+
+    <script>
+        // Utility functions
+        const $ = selector => document.querySelector(selector);
+        const $$ = selector => document.querySelectorAll(selector);
+
+        // Toggle menu functionality
+        function toggleMenu() {
+            const navLinks = $('#navLinks');
+            const menuBtn = $('.menu-btn i');
+            
+            navLinks.classList.toggle('active');
+            menuBtn.classList.toggle('fa-bars');
+            menuBtn.classList.toggle('fa-times');
+            
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize animations for features section
+            const featuresContainer = $('.features-container');
+            if (featuresContainer) {
+                setTimeout(() => {
+                    featuresContainer.classList.add('animate');
+                    void featuresContainer.offsetWidth;
+                    if (isElementInViewport(featuresContainer)) {
+                        featuresContainer.classList.add('visible');
+                    }
+                }, 100);
+            }
+
+            // Add loading state to disease cards
+            const diseaseCards = $$('.disease-card');
+            diseaseCards.forEach(card => {
+                card.classList.add('loading');
+                const img = card.querySelector('img');
+                if (img) {
+                    img.onload = () => {
+                        card.classList.remove('loading');
+                    };
+                }
+            });
+
+            // Intersection Observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        if (entry.target.classList.contains('disease-card')) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Observe elements for animation
+            $$('.component-card, .team-card, .process-item, .vision-card, .video-container, .disease-card').forEach(el => {
+                observer.observe(el);
+                if (el.classList.contains('disease-card')) {
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateY(20px)';
+                    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                }
+            });
+
+            // Helper function to check if element is in viewport
+            function isElementInViewport(el) {
+                const rect = el.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+            }
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                const navLinks = $('#navLinks');
+                const menuBtn = $('.menu-btn');
+                
+                if (!navLinks.contains(e.target) && !menuBtn.contains(e.target)) {
+                    navLinks.classList.remove('active');
+                    $('.menu-btn i').className = 'fas fa-bars';
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 765) {
+                    $('#navLinks').classList.remove('active');
+                    $('.menu-btn i').className = 'fas fa-bars';
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // Smooth scrolling
+            $$('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', e => {
+                    e.preventDefault();
+                    $(anchor.getAttribute('href')).scrollIntoView({behavior: 'smooth'});
+                    if ($('#navLinks').classList.contains('active')) {
+                        toggleMenu();
+                    }
+                });
+            });
+
+            // Image lazy loading
+            const imageObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                            img.onload = () => {
+                                img.style.opacity = '1';
+                                img.parentElement.classList.add('loaded');
+                            };
+                        }
+                        imageObserver.unobserve(img);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '50px'
+            });
+
+            $$('img[data-src]').forEach(img => imageObserver.observe(img));
+
+            // Handle image errors
+            $$('.member-image img').forEach(img => {
+                img.addEventListener('error', () => {
+                    const initials = img.alt.split(' ')
+                        .map(word => word[0])
+                        .join('')
+                        .toUpperCase();
+                    
+                    const fallback = document.createElement('span');
+                    fallback.className = 'fallback-initials';
+                    fallback.textContent = initials;
+                    
+                    img.parentElement.appendChild(fallback);
+                });
+            });
+
+            // Mobile process section handling
+            if (window.innerWidth <= 768) {
+                const workflowContainer = $('.workflow-container');
+                if (workflowContainer) {
+                    const items = $$('.workflow-item');
+                    const dotsContainer = document.createElement('div');
+                    dotsContainer.className = 'progress-dots';
+                    
+                    items.forEach((_, index) => {
+                        const dot = document.createElement('div');
+                        dot.className = `dot${index === 0 ? ' active' : ''}`;
+                        dotsContainer.appendChild(dot);
+                    });
+                    
+                    workflowContainer.parentElement.appendChild(dotsContainer);
+                    
+                    let startX, scrollLeft;
+                    
+                    workflowContainer.addEventListener('touchstart', e => {
+                        startX = e.touches[0].pageX - workflowContainer.offsetLeft;
+                        scrollLeft = workflowContainer.scrollLeft;
+                    }, {passive: true});
+                    
+                    workflowContainer.addEventListener('touchmove', e => {
+                        if (!startX) return;
+                        const x = e.touches[0].pageX - workflowContainer.offsetLeft;
+                        workflowContainer.scrollLeft = scrollLeft - (x - startX);
+                    }, {passive: true});
+                    
+                    workflowContainer.addEventListener('touchend', () => {
+                        startX = null;
+                        const itemWidth = items[0].offsetWidth + 16;
+                        const targetIndex = Math.round(workflowContainer.scrollLeft / itemWidth);
+                        workflowContainer.scrollTo({
+                            left: targetIndex * itemWidth,
+                            behavior: 'smooth'
+                        });
+                        
+                        $$('.dot').forEach((dot, index) => {
+                            dot.classList.toggle('active', index === targetIndex);
+                        });
+                        
+                        items.forEach((item, index) => {
+                            item.classList.toggle('active', index === targetIndex);
+                        });
+                    });
+
+                    // Initialize scroll position to show first item
+                    workflowContainer.scrollTo({
+                        left: 0,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
+
+        // Optimize scroll performance
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    // Scroll-based updates here
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    </script>
+</body>
+</html>

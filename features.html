@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+html,body {
+        height: 100%;
+        margin: 0;
+        padding: 0%;
+      }
+
+      /* .features-section{
+        height: 100vh;
+        width: 100vw;
+      } */
+
+      .features-container{
+        align-content: center;
+      }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/images/logoDhruvai.png" alt="DHRUV.AI Logo">
+                <div class="logo-text">
+                    <span class="dhruv">DHRUV</span><span class="ai">.AI</span>
+                </div>
+            </div>
+            
+            <button class="menu-btn" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="home.html" class="nav-item">Home</a>
+                <a href="vision.html" class="nav-item">Vision</a>
+                <a href="aimodel.html" class="nav-item">AIModel</a>
+                <a href="process.html" class="nav-item">Process</a>
+                <a href="features.html" class="nav-item">Features</a>
+                <!-- <a href="#components" class="nav-item">Components</a> -->
+                <a href="video.html" class="nav-item">Gallery</a>
+                <!-- <a href="footer.html" class="nav-item">Contact Us</a> -->
+            </div>
+        </div>
+    </nav>
+
+    <section class="features-section">
+        <div class="features-container">
+            <h2>Features of Our Drone</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-camera-retro"></i>
+                    <h3>High Resolution Imaging</h3>
+                    <p>4K camera with advanced stabilization for crystal clear aerial imagery</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-battery-three-quarters"></i>
+                    <h3>Long Flight Time</h3>
+                    <p>Up to 30 minutes of flight time on a single charge</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-wind"></i>
+                    <h3>Wind Resistant</h3>
+                    <p>Stable flight in winds up to 25mph for reliable operation</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-satellite-dish"></i>
+                    <h3>GPS Precision</h3>
+                    <p>Accurate positioning and autonomous navigation capabilities</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-microchip"></i>
+                    <h3>Smart AI Processing</h3>
+                    <p>Real-time data analysis and crop health assessment</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Fail-Safe System</h3>
+                    <p>Multiple safety features including return-to-home function</p>
+                </div>
+            </div>
+        </div>
+        
+    </section> 
+    
+    <footer class="footer" id="footer">
+        <div class="footer-bottom">
+            <p>© 2024 DHRUV.AI | All Rights Reserved</p>
+        </div>
+    </footer>
+
+
+
+</body>
+</html>
